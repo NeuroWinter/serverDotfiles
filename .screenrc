@@ -1,0 +1,15 @@
+
+sessionname rtorrent
+screen -t rtorrentTv1 rtorrent -n -o import=/home/neuro/.rtorrent1.rc
+screen -t rtorrentMovies2 rtorrent -n -o import=/home/neuro/.rtorrent2.rc
+screen -t rtorrentGames rtorrent -n -o import=/home/neuro/.rtorrent3.rc
+screen -t TRANSCODES python /mnt/tank/lamp/django/WhatManager2/manage.py celery worker --loglevel=info --concurrency=1
+bind ',' prev
+bind '.' next
+
+altscreen on
+#change the hardstatus settings to give an window list at the bottom of the                                                                        
+#screen, with the time and date and with the current window highlighted                                                                            
+hardstatus alwayslastline
+#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
